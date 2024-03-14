@@ -51,7 +51,9 @@ class Home extends StatelessWidget {
           selectedItemColor: Colors.orange,
           unselectedItemColor: Colors.grey,
           currentIndex: bottomNavigationController.selectedIndex.value,
-          onTap: bottomNavigationController.onItemTapped,
+          onTap: (index) {
+            bottomNavigationController.onItemTapped(index);
+          },
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home_filled),
@@ -76,19 +78,6 @@ class Home extends StatelessWidget {
           title: const Text("Home"),
           backgroundColor: Colors.orangeAccent,
         ),
-
-        // Reemplace el Navigator.push de 8 líneas por un simple Get.to(). No necesitas contexto
-        // body: Center(
-        //     child: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     ElevatedButton(
-        //         child: const Text("Go to Other"),
-        //         onPressed: () => Get.to(Other())),
-        //     // Utilice Obx(()=> para actualizar Text() siempre que se cambie el recuento.
-        //     Obx(() => Text("Clicks: ${c.count.string}"))
-        //   ],
-        // )),
         floatingActionButton: FloatingActionButton(
             onPressed: c.increment, child: const Icon(Icons.add)));
   }
